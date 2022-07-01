@@ -1,10 +1,17 @@
 package com.example.dentistproject.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name ="odontologos")
+@Table(name ="dentists")
+@Getter
+@Setter
 public class Dentist {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -12,40 +19,16 @@ public class Dentist {
 
     @Column(name = "name")
     private String name;
-    @Column(name = "surname")
-    private String surname;
+    @Column(name = "lastName")
+    private String lastName;
     @Column(name = "license")
     private String license;
+    @OneToMany(mappedBy = "dentist")
+    @JsonIgnore
+    private Set<Turn> turns;
 
-    public Long getId() {
-        return id;
+    public Set<Turn> getTurns() {
+        return turns;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public void setLicense(String license) {
-        this.license = license;
-    }
 }

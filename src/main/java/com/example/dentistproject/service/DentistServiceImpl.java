@@ -30,7 +30,7 @@ public class DentistServiceImpl implements  DentistService{
             Dentist dentistUpdate = dentistDb.get();
             dentistUpdate.setId(dentist.getId());
             dentistUpdate.setName(dentist.getName());
-            dentistUpdate.setSurname(dentist.getSurname());
+            dentistUpdate.setLastName(dentist.getLastName());
             dentistUpdate.setLicense(dentist.getLicense());
             dentistRepository.save(dentistUpdate);
             return  dentistUpdate;
