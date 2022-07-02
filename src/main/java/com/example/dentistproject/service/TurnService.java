@@ -6,7 +6,7 @@ import com.example.dentistproject.model.TurnDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-@Service
+
 public interface TurnService {
 
     void createTurn(TurnDTO turnDTO);

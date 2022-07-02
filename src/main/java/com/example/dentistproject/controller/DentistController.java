@@ -22,12 +22,13 @@ public class DentistController {
     }
 
     @GetMapping("/dentists/{id}")
-    public ResponseEntity<Dentist> getDentistById(@PathVariable long id) {
-        return ResponseEntity.ok().body(dentistService.getDentistById(id));
+    public DentistDTO getDentistById(@PathVariable long id) throws  Exception{
+        return dentistService.readSDentist(id);
     }
 
     @PostMapping("/dentist")
     public ResponseEntity<?> addDentist(@RequestBody DentistDTO dentistDTO) {
+        dentistService.addDentist(dentistDTO);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

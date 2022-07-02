@@ -1,13 +1,21 @@
 package com.example.dentistproject.model;
 
-import lombok.Getter;
-import lombok.Setter;
+
 
 public class DentistDTO {
 
     private Long id;
     private String name;
     private String lastName;
+    private String license;
+
+    public String getLicense() {
+        return license;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
+    }
 
     public Long getId() {
         return id;

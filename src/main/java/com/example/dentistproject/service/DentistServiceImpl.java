@@ -28,6 +28,20 @@ public class DentistServiceImpl implements  DentistService{
     }
 
     @Override
+    public DentistDTO readSDentist(Long id) throws Exception {
+
+            Optional<Dentist> found = dentistRepository.findById(id);
+            DentistDTO dentistDTO = null;
+            if(found.isPresent())
+                return mapper.convertValue(found, DentistDTO.class);
+            else
+                throw new Exception("Dentist Does Not Exist");
+
+
+    }
+
+
+    @Override
     public Dentist updateDentist(Dentist dentist) {
         Optional<Dentist> dentistDb = this.dentistRepository.findById(dentist.getId());
         if(dentistDb.isPresent()) {
@@ -53,16 +67,6 @@ public class DentistServiceImpl implements  DentistService{
         return allDentistDTO;
 
 
-    }
-
-    @Override
-    public Dentist getDentistById(long dentistId) {
-        Optional<Dentist> dentistDb = this.dentistRepository.findById(dentistId);
-        if(dentistDb.isPresent()) {
-            return dentistDb.get();
-        } else {
-            throw new ResourceNotFoundException("Record not found with id: " + dentistId);
-        }
     }
 
     @Override

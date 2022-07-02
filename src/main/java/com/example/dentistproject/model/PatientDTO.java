@@ -1,7 +1,6 @@
 package com.example.dentistproject.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Date;
 
 
 public class PatientDTO {
@@ -9,6 +8,11 @@ public class PatientDTO {
     private String name;
     private String lastName;
     private String idCard;
+
+    private Date admissionDate;
+
+    private Address address;
+
 
     public Long getId() {
         return id;
@@ -40,5 +44,21 @@ public class PatientDTO {
 
     public void setIdCard(String idCard) {
         this.idCard = idCard;
+    }
+
+    public Date getAdmissionDate() {
+        return admissionDate;
+    }
+
+    public void setAdmissionDate(Date admissionDate) {
+        this.admissionDate = admissionDate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

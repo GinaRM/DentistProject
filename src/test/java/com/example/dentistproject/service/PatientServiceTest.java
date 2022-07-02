@@ -16,6 +16,7 @@ class PatientServiceTest {
         PatientDTO patientDTO = new PatientDTO();
         patientDTO.setName("Johnny");
         patientDTO.setLastName("Doe");
+
         patientService.addPatient(patientDTO);
     }
 
