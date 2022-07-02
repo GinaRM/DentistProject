@@ -5,7 +5,7 @@ import com.example.dentistproject.model.DentistDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-@Service
+
 
 public interface DentistService {
    void addDentist(DentistDTO dentist);

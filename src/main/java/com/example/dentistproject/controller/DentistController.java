@@ -1,12 +1,14 @@
 package com.example.dentistproject.controller;
 
 import com.example.dentistproject.model.Dentist;
+import com.example.dentistproject.model.DentistDTO;
 import com.example.dentistproject.service.DentistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -15,7 +17,7 @@ public class DentistController {
     private DentistService dentistService;
 
     @GetMapping("/dentists")
-    public ResponseEntity<List<Dentist>> getAllDentist() {
+    public ResponseEntity<Collection<DentistDTO>> getAllDentist() {
         return ResponseEntity.ok().body(dentistService.getAllDentist());
     }
 
@@ -25,14 +27,18 @@ public class DentistController {
     }
 
     @PostMapping("/dentist")
-    public ResponseEntity<Dentist> addDentist(@RequestBody Dentist dentist) {
-        return ResponseEntity.ok().body(this.dentistService.addDentist(dentist));
+    public ResponseEntity<?> addDentist(@RequestBody DentistDTO dentistDTO) {
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/dentists/{id}")
     public ResponseEntity<Dentist> updateDentist(@PathVariable long id, @RequestBody Dentist dentist) {
         dentist.setId(id);
-        return ResponseEntity.ok().body(this.dentistService.updateDentist(dentist));
+        try {
+            return ResponseEntity.ok().body(this.dentistService.updateDentist(dentist));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @DeleteMapping("/dentists/{id}")

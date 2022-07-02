@@ -12,8 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.*;
 
-@Service
+
 @Transactional
+@Service
 public class DentistServiceImpl implements  DentistService{
 
     @Autowired
