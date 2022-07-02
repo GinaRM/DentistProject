@@ -20,7 +20,7 @@ public class Patient {
     private String idCard;
     private Date admissionDate;
     @OneToOne
-    private Home home;
+    private Address address;
     private Set<Turn> turns;
     @OneToMany(mappedBy = "patient")
     @JsonIgnore
@@ -35,22 +35,22 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Long id, String name, String lastName, String idCard, Date admissionDate, Home home) {
+    public Patient(Long id, String name, String lastName, String idCard, Date admissionDate, Address address) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.idCard = idCard;
         this.admissionDate = admissionDate;
-        this.home = home;
+        this.address = address;
     }
 
-    public Patient(String name, String lastName, String idCard, Date admissionDate, Home home) {
+    public Patient(String name, String lastName, String idCard, Date admissionDate, Address address) {
 
         this.name = name;
         this.lastName = lastName;
         this.idCard = idCard;
         this.admissionDate = admissionDate;
-        this.home = home;
+        this.address = address;
     }
 
 
@@ -63,7 +63,7 @@ public class Patient {
                 ", lastName='" + lastName + '\'' +
                 ", idCard='" + idCard + '\'' +
                 ", admissionDate=" + admissionDate +
-                ", address=" + home +
+                ", address=" + address +
                 '}';
     }
 }

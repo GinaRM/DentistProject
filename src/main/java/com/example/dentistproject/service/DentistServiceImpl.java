@@ -2,14 +2,15 @@ package com.example.dentistproject.service;
 
 import com.example.dentistproject.exception.ResourceNotFoundException;
 import com.example.dentistproject.model.Dentist;
+import com.example.dentistproject.model.DentistDTO;
 import com.example.dentistproject.repository.DentistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -17,10 +18,12 @@ public class DentistServiceImpl implements  DentistService{
 
     @Autowired
     private DentistRepository dentistRepository;
+    @Autowired
+    ObjectMapper mapper;
 
     @Override
-    public Dentist addDentist(Dentist dentist) {
-        return dentistRepository.save(dentist);
+    public void addDentist(DentistDTO dentistDTO) {
+        saveDentist(dentistDTO);
     }
 
     @Override
@@ -40,8 +43,15 @@ public class DentistServiceImpl implements  DentistService{
     }
 
     @Override
-    public List<Dentist> getAllDentist() {
-        return this.dentistRepository.findAll();
+    public Collection<DentistDTO> getAllDentist() {
+        List<Dentist> allDentists = dentistRepository.findAll();
+        Set<DentistDTO> allDentistDTO = new HashSet<DentistDTO>();
+        for (Dentist dentist : allDentists) {
+            allDentistDTO.add(mapper.convertValue(dentist, DentistDTO.class));
+        }
+        return allDentistDTO;
+
+
     }
 
     @Override
@@ -63,5 +73,10 @@ public class DentistServiceImpl implements  DentistService{
             throw new ResourceNotFoundException("Record not found with id: " + id);
         }
 
+    }
+
+    private void saveDentist(DentistDTO dentistDTO) {
+        Dentist newDentist = mapper.convertValue(dentistDTO, Dentist.class);
+        dentistRepository.save(newDentist);
     }
 }

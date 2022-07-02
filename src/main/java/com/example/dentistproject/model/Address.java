@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter
-public class Home {
+public class Address {
     @Id
     @GeneratedValue
     private Integer id;
@@ -18,17 +18,17 @@ public class Home {
     private String localidad;
     private String provincia;
 
-    public Home() {
+    public Address() {
     }
 
-    public Home(Integer id, String calle, String numero, String localidad, String provincia) {
+    public Address(Integer id, String calle, String numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
         this.provincia = provincia;
     }
-    public Home(String calle, String numero, String localidad, String provincia) {
+    public Address(String calle, String numero, String localidad, String provincia) {
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
