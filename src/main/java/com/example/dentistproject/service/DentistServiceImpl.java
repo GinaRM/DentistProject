@@ -15,6 +15,7 @@ import java.util.*;
 
 
 @Service
+@Transactional
 public class DentistServiceImpl implements  DentistService{
 
     @Autowired
@@ -42,8 +43,19 @@ public class DentistServiceImpl implements  DentistService{
 
 
     @Override
-    public void updateDentist(DentistDTO dentistDTO) {
-        saveDentist(dentistDTO);
+    public Dentist updateDentist(Dentist dentist) {
+        Optional<Dentist> dentistDb = this.dentistRepository.findById(dentist.getId());
+        if(dentistDb.isPresent()) {
+            Dentist dentistUpdate = dentistDb.get();
+            dentistUpdate.setId(dentist.getId());
+            dentistUpdate.setName(dentist.getName());
+            dentistUpdate.setLastName(dentist.getLastName());
+            dentistUpdate.setLicense(dentist.getLicense());
+            dentistRepository.save(dentistUpdate);
+            return  dentistUpdate;
+        } else {
+            throw new ResourceNotFoundException("Record not found with id: " + dentist.getId());
+        }
     }
 
     @Override

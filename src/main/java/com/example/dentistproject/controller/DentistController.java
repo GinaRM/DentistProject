@@ -32,16 +32,16 @@ public class DentistController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PutMapping("/dentist/{id}")
-    public ResponseEntity<?> updateDentist(@RequestBody DentistDTO dentistDTO) {
-        dentistService.updateDentist(dentistDTO);
-        return ResponseEntity.ok(HttpStatus.OK);
+    @PutMapping("/dentists/{id}")
+    public ResponseEntity<Dentist> updateDentist(@PathVariable long id, @RequestBody Dentist dentist) {
+        dentist.setId(id);
+        return ResponseEntity.ok().body(this.dentistService.updateDentist(dentist));
     }
 
 
 
     @DeleteMapping("/dentists/{id}")
-    public HttpStatus deleteDentist(@PathVariable long id) {
+    public HttpStatus deleteDentist(@PathVariable long id ) {
         this.dentistService.deleteDentist(id);
         return HttpStatus.OK;
     }
