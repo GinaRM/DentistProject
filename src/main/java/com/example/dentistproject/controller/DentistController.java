@@ -32,15 +32,13 @@ public class DentistController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PutMapping("/dentists/{id}")
-    public ResponseEntity<Dentist> updateDentist(@PathVariable long id, @RequestBody Dentist dentist) {
-        dentist.setId(id);
-        try {
-            return ResponseEntity.ok().body(this.dentistService.updateDentist(dentist));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    @PutMapping("/dentist/{id}")
+    public ResponseEntity<?> updateDentist(@RequestBody DentistDTO dentistDTO) {
+        dentistService.updateDentist(dentistDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
+
+
 
     @DeleteMapping("/dentists/{id}")
     public HttpStatus deleteDentist(@PathVariable long id) {

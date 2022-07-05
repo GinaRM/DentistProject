@@ -10,7 +10,7 @@ import java.util.Collection;
 public interface DentistService {
    void addDentist(DentistDTO dentist);
    DentistDTO readSDentist(Long id) throws Exception;
-   Dentist updateDentist(Dentist dentist) throws  Exception;
+   void updateDentist(DentistDTO dentistDTO);
    Collection<DentistDTO> getAllDentist();
 
    void deleteDentist(long id);

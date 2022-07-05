@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.*;
 
 
-@Transactional
+
 @Service
 public class DentistServiceImpl implements  DentistService{
 
@@ -42,19 +42,8 @@ public class DentistServiceImpl implements  DentistService{
 
 
     @Override
-    public Dentist updateDentist(Dentist dentist) {
-        Optional<Dentist> dentistDb = this.dentistRepository.findById(dentist.getId());
-        if(dentistDb.isPresent()) {
-            Dentist dentistUpdate = dentistDb.get();
-            dentistUpdate.setId(dentist.getId());
-            dentistUpdate.setName(dentist.getName());
-            dentistUpdate.setLastName(dentist.getLastName());
-            dentistUpdate.setLicense(dentist.getLicense());
-            dentistRepository.save(dentistUpdate);
-            return  dentistUpdate;
-        } else {
-            throw new ResourceNotFoundException("Record not found with id: " + dentist.getId());
-        }
+    public void updateDentist(DentistDTO dentistDTO) {
+        saveDentist(dentistDTO);
     }
 
     @Override
