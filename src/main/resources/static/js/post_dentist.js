@@ -21,7 +21,7 @@ $(document).ready(function() {
                console.log(response)
                 let successAlert = '<div class="alert alert-success alert-dismissible">' +
                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                    '<strong></strong> Dentist added </div>'
+                    '<strong></strong> Dentist Added </div>'
                 $("#response").append(successAlert);
                 $("#response").css({"display": "block"});
 
@@ -30,7 +30,7 @@ $(document).ready(function() {
             error: function (response) {
                 let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                    '<strong> Oops, try again</strong> </div>'
+                    '<strong> Error, try Again</strong> </div>'
                 $("#response").append(errorAlert);
                 $("#response").css({"display": "block"});
 

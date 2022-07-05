@@ -12,7 +12,7 @@ $(document).ready(function(){
         }
             
             $.ajax({
-                url: '/dentist' + dentistId,
+                url: '/dentists/' + dentistId,
                 type: 'PUT',
                 contentType : "application/json",
                 data: JSON.stringify(formData),
