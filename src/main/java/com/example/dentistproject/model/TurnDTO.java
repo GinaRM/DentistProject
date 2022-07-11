@@ -1,6 +1,7 @@
 package com.example.dentistproject.model;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -8,7 +9,13 @@ public class TurnDTO {
     private long id;
     private Dentist dentist;
     private Patient patient;
-    private Date date;
+    private LocalDate date;
+
+    public TurnDTO(Dentist dentist, Patient patient, LocalDate date) {
+        this.dentist = dentist;
+        this.patient = patient;
+        this.date = date;
+    }
 
     public long getId() {
         return id;
@@ -34,11 +41,11 @@ public class TurnDTO {
         this.patient = patient;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.dentistproject.controller;
 
+import com.example.dentistproject.model.DentistDTO;
 import com.example.dentistproject.model.PatientDTO;
 import com.example.dentistproject.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,10 @@ public class PatientController {
     }
 
     @GetMapping("/list")
-    public Collection<PatientDTO> listPatients() {
-        return patientService.getAllPatients();
+    public ResponseEntity<Collection<PatientDTO>> listPatients() {
+        return ResponseEntity.ok().body(patientService.getAllPatients());
+
     }
+
+
 }

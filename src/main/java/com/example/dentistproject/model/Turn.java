@@ -1,5 +1,6 @@
 package com.example.dentistproject.model;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 @Entity
 @Table(name = "turns")
@@ -16,7 +17,14 @@ public class Turn {
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    private Date date;
+    private LocalDate date;
+
+    public Turn(Dentist dentist, Patient patient, LocalDate date) {
+        this.dentist = dentist;
+        this.patient = patient;
+        this.date = date;
+    }
+
 
     public Long getId() {
         return id;
@@ -42,11 +50,11 @@ public class Turn {
         this.patient = patient;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

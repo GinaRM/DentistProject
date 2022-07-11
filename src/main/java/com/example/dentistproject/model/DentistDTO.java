@@ -9,6 +9,12 @@ public class DentistDTO {
     private String lastName;
     private String license;
 
+    public DentistDTO(String name, String lastName, String license) {
+        this.name = name;
+        this.lastName = lastName;
+        this.license = license;
+    }
+
     public String getLicense() {
         return license;
     }

@@ -20,9 +20,18 @@ public class Dentist {
     private String lastName;
     @Column(name = "license", nullable = false)
     private String license;
-    @OneToMany(mappedBy = "dentist")
+    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Turn> turns;
+
+    public Dentist() {
+    }
+
+    public Dentist(String name, String lastName, String license) {
+        this.name = name;
+        this.lastName = lastName;
+        this.license = license;
+    }
 
     public Long getId() {
         return id;
