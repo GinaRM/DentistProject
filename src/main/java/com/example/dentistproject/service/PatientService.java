@@ -11,7 +11,7 @@ public interface PatientService {
    void addPatient(PatientDTO patientDTO);
    PatientDTO readPatient(Long id) throws Exception;
    void updatePatient(PatientDTO patientDTO);
-   void deletePatient(long id);
+   void deletePatient(Long id);
    Set<PatientDTO> getAllPatients();
 
 

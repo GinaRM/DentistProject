@@ -13,5 +13,5 @@ public interface DentistService {
    Dentist updateDentist(Dentist dentist);
    Collection<DentistDTO> getAllDentist();
 
-   void deleteDentist(long id);
+   void deleteDentist(Long id);
 }

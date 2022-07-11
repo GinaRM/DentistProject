@@ -12,6 +12,6 @@ public interface TurnService {
     void createTurn(TurnDTO turnDTO);
     TurnDTO readTurn(Long id) throws Exception;
     void updateTurn(TurnDTO turnDTO);
-    void deleteTurn(long id);
+    void deleteTurn(Long id);
     Set<TurnDTO> getAllTurns();
 }

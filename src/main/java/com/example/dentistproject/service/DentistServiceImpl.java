@@ -71,7 +71,7 @@ public class DentistServiceImpl implements  DentistService{
     }
 
     @Override
-    public void deleteDentist(long id) {
+    public void deleteDentist(Long id) {
         Optional<Dentist> dentistDb = this.dentistRepository.findById(id);
         if(dentistDb.isPresent()) {
             this.dentistRepository.delete(dentistDb.get());

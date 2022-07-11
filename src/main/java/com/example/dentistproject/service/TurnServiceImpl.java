@@ -43,7 +43,7 @@ public class TurnServiceImpl implements TurnService {
     }
 
     @Override
-    public void deleteTurn(long id) {
+    public void deleteTurn(Long id) {
         turnRepository.deleteById(id);
     }
 
