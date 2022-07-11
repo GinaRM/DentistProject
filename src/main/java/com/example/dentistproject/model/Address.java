@@ -1,25 +1,24 @@
 package com.example.dentistproject.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 
 public class Address {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String calle;
     private String numero;
     private String localidad;
     private String provincia;
 
-    public Address() {
-    }
+    public Address() {}
+
+
 
     public Address(Integer id, String calle, String numero, String localidad, String provincia) {
         this.id = id;
@@ -28,6 +27,7 @@ public class Address {
         this.localidad = localidad;
         this.provincia = provincia;
     }
+
     public Address(String calle, String numero, String localidad, String provincia) {
         this.calle = calle;
         this.numero = numero;

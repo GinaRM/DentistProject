@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 @Entity
@@ -12,13 +13,14 @@ import java.util.Set;
 public class Patient {
 
 @Id
-@GeneratedValue
+@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String lastName;
     private String idCard;
-    private Date admissionDate;
-    @OneToOne
+    private LocalDate admissionDate;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "address")
     private Address address;
     @OneToMany(mappedBy = "patient")
     @JsonIgnore
@@ -59,11 +61,11 @@ public class Patient {
         this.idCard = idCard;
     }
 
-    public Date getAdmissionDate() {
+    public LocalDate getAdmissionDate() {
         return admissionDate;
     }
 
-    public void setAdmissionDate(Date admissionDate) {
+    public void setAdmissionDate(LocalDate admissionDate) {
         this.admissionDate = admissionDate;
     }
 
@@ -84,7 +86,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Long id, String name, String lastName, String idCard, Date admissionDate, Address address) {
+    public Patient(Long id, String name, String lastName, String idCard, LocalDate admissionDate, Address address) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -93,7 +95,7 @@ public class Patient {
         this.address = address;
     }
 
-    public Patient(String name, String lastName, String idCard, Date admissionDate, Address address) {
+    public Patient(String name, String lastName, String idCard, LocalDate admissionDate, Address address) {
 
         this.name = name;
         this.lastName = lastName;

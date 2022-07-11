@@ -1,6 +1,6 @@
 package com.example.dentistproject.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 public class PatientDTO {
@@ -9,10 +9,17 @@ public class PatientDTO {
     private String lastName;
     private String idCard;
 
-    private Date admissionDate;
+    private LocalDate  admissionDate;
 
     private Address address;
 
+    public PatientDTO(String name, String lastName, String idCard, LocalDate admissionDate, Address address) {
+        this.name = name;
+        this.lastName = lastName;
+        this.idCard = idCard;
+        this.admissionDate = admissionDate;
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -46,11 +53,11 @@ public class PatientDTO {
         this.idCard = idCard;
     }
 
-    public Date getAdmissionDate() {
+    public LocalDate getAdmissionDate() {
         return admissionDate;
     }
 
-    public void setAdmissionDate(Date admissionDate) {
+    public void setAdmissionDate(LocalDate admissionDate) {
         this.admissionDate = admissionDate;
     }
 
