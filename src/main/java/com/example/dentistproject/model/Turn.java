@@ -7,13 +7,13 @@ import java.util.Date;
 
 public class Turn {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL )
     @JoinColumn(name = "dentist_id", nullable = false)
     private Dentist dentist;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
